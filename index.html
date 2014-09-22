@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Spatio-temporal data handling and visualization in GRASS GIS</title>
+  <title>Gestione e visualizzazione di dati spazio-temporali con GRASS GIS</title>
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="shortcut icon" href="grass.png">
@@ -36,8 +36,8 @@
 
 <body>
 
-<h1>Spatio-temporal data handling and visualization in GRASS GIS</h1>
-<h2 class="notoc">FOSS4G 2014 workshop</h2>
+<h1>Gestione e visualizzazione di dati spazio-temporali con GRASS GIS</h1>
+<h2 class="notoc">Workshop FOSS4G 2014</h2>
 <p>
 Vaclav Petras,
 Anna Petrasova,
@@ -51,11 +51,11 @@ Markus Neteler
 </p>
 
 <p>
-Outline:
+Sommario:
 <ul>
-<li> Quick <a href="./GRASS_intro.pdf">introduction to GRASS GIS</a> and <a href="./TGRASS_intro.pdf">GRASS Temporal Framework</a></li>
-<li> <a href="#climate-data-analysis">analyze and visualize climate data</a>
-<li> <a href="#nagshead-series">process coastal terrain time series and visualize space-time cube</a>
+<li> Rapida <a href="./GRASS_intro.pdf">introduzione a GRASS GIS</a> ed al <a href="./TGRASS_intro.pdf">Framework GRASS Temporal</a></li>
+<li> <a href="#climate-data-analysis">analisi e visualizzazione di dati climatici</a>
+<li> <a href="#nagshead-series">processamento di serie temporali per dati costieri e visualizzazione del cubo spazio-tempo</a>
 <li> <a href="#visualization-of-solar-radiation">compute and visualize solar radiation dynamics</a>
 </ul>
 
@@ -63,8 +63,8 @@ Outline:
 Software:
 <ul>
 <li>GRASS GIS 7</li>
-<li>matplotlib with pyplot
-(included in GRASS installation for MS Windows; package python-matplotlib for Ubuntu)</li>
+<li>matplotlib con pyplot
+(inclusa nel pacchetto GRASS per MS Windows; pacchetto python-matplotlib per Ubuntu)</li>
 </ul>
 
 <p>
@@ -72,18 +72,18 @@ Data:
 <ul>
 <li>location <a href="./NC_spm_temporal_workshop.zip">NC_spm_temporal workshop</a>
 <ul>
-<li>mapset <code>climate_2000_2012</code>: temperature and precipitation series for the whole North Carolina</li>
-<li>mapset <code>NagsHead_series</code>: elevation data time series, derived from lidar data</li>
-<li>mapset <code>centennial</code>: DEM of part of Centennial campus, NC State University, derived from lidar data</li>
+<li>mapset <code>climate_2000_2012</code>: serie di temperature e piogge per l'intero North Carolina</li>
+<li>mapset <code>NagsHead_series</code>: serie temporale di dati di elevazione derivate da dati lidar</li>
+<li>mapset <code>centennial</code>: DEM di una parte del campuse Centennial, NC State University, derivato da dati lidar</li>
 </ul>
-<li>alternative color tables:
-    <a href="http://courses.ncsu.edu/mea592/common/Assign_GISmdmodel/temperature_color.txt">temperature</a>,
-    <a href="http://courses.ncsu.edu/mea592/common/Assign_GISmdmodel/precip_color.txt">precipitation</a>
+<li>tabella alternativa per colori:
+    <a href="http://courses.ncsu.edu/mea592/common/Assign_GISmdmodel/temperature_color.txt">temperatura</a>,
+    <a href="http://courses.ncsu.edu/mea592/common/Assign_GISmdmodel/precip_color.txt">pioggia</a>
 </li>
 </ul>
 
 <p>
-Terminology:
+Terminologia:
 <ul>
 <li>map in GRASS describes a spatial phenomenon, map is stored in GRASS database,
   it can be raster, vector, or 3D raster (other GIS systems often call this a layer)</li>
@@ -162,7 +162,7 @@ t.create output=precip_sum type=strds temporaltype=absolute title="Preciptation"
 
 <p>
 Now we register raster maps into yet empty space-time raster datasets
-with start date 2000-01-01 and interval time with increment 1 month. 
+with start date 2000-01-01 and interval time with increment 1 month.
 We use g.mlist again to list separately temperature and precipitation maps.
 Note that g.mlist lists maps alphabetically which in this case orders the maps
 chronologically which is what we need.
@@ -299,7 +299,7 @@ Create an animation of precipitation in 2010 (as in the picture) by following th
 <p>
 <img src="./pictures/anim1_result1.png" style="width: 400px;" alt="Result from Animation Tool (one animation)"/>
 <ul>
-<li>Run Animation tool (in menu find Temporal > GUI tools > Animation tool) 
+<li>Run Animation tool (in menu find Temporal > GUI tools > Animation tool)
 and add animation using these <a target="_blank" href="./pictures/anim1.png">screenshot instructions</a>
 for <code>precip_sum_2010</code>.</li>
 <li> When the animation is done, we can change the time format to better
@@ -444,7 +444,7 @@ t.rast.extract input=tempmean_seasonal where="strftime('%m', start_time)='06'" e
 Now we will display an animation of summer temperatures in North Carolina
 and we will overlay static vector map of counties' boundaries and semi-transparent shaded relief.
 
-Before we display the maps, we set color table of the entire time series. 
+Before we display the maps, we set color table of the entire time series.
 
 <pre><code class="neutral">
 t.rast.colors input=tempmean_F_summer color=byr
@@ -484,12 +484,12 @@ g.extension extension=r.regression.series
 </pre>
 
 <p>
-Now we determine the correlation. Note that r.regression.series does not accept 
+Now we determine the correlation. Note that r.regression.series does not accept
 spatio-temporal datasets yet, just individual maps:
 
 <pre>
 <code class="gui">
-Run g.mlist two times: 
+Run g.mlist two times:
 
     g.mlist type=rast pattern="tempmean_F_summer*" separator=comma --q
     g.mlist type=rast pattern="precip_inch_summer*" separator=comma --q
