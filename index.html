@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="highlightjs/styles/default.css">
 <script src="highlightjs/highlight.pack.js"></script>
 
-
 <style>
 .hljs{
     display: none;
@@ -33,6 +32,7 @@
   <link rel="stylesheet" href="codetabs.css">
 
 </head>
+<style>
 
 <body>
 
@@ -87,7 +87,7 @@ Terminologia:
 
 <ul>
 <li>
-  una mappa in GRASS descrive un fenomeno spaziale e viene archiviata all'interno di un GRASS database;
+  in GRASS una mappa  descrive un fenomeno spaziale e viene archiviata all'interno di un GRASS database;
   può essere di tipo raster, vettoriale oppure raster 3D (altri applicativi GIS usano il termine layer).
 </li>
 
@@ -130,12 +130,12 @@ Note:
 
 <h2 id="climate-data-analysis">Climate data analysis</h2>
 
-<h3>Basic commands and visualizations</h3>
+<h3>Visualizzazione e comandi introduttivi</h3>
 <p>
-Start GRASS with location NC_spm_temporal_workshop and mapset climate_2000_2012.
-First we list available raster maps and display the first temperature
-and precipitation maps from the series to make ourselves familiar with the data.
-
+Avvia GRASS selezionando la location NC_spm_temporal_workshop ed il mapset
+climate_2000_2012. Per prima cosa elencheremo le mappe raster disponibili
+e visualizzeremo le mappe con i primi dati di pioggia e temperatura, in modo
+da familiarizzare con queste informazioni.
 <!-- TODO: things with stdout cannot work with run_command, needs read_command -->
 <pre>
 <code class="neutral">
@@ -147,8 +147,8 @@ g.mlist type=rast pattern="*precip"
 
 <pre>
 <code class="gui">
-In Layer Manager menu: File -> Map display -> Add raster (also available on toolbar)
-Select raster map '2000_01_tempmean'
+All'interno del Layer Manager selezionare menu: File -> Map display -> Add raster (disponibile anche all'interno della toolbar)
+Selezionare la mappa raster 2000_01_tempmean'
 Display legend
 
 <img style="width: 600px;" src="pictures/scr_legend.png" alt="display precipitation map and legend" title="display precipitation map and legend">
@@ -163,6 +163,11 @@ d.legend 2000_01_tempmean
 </pre>
 
 <p>
+Per gesitere al meglio la lunga serie di mappe, creeremo un dataset di tipo
+temporale che verrà utilizzato come un contenitore per l'interavserie temporale
+e che verrà utilizzato per analizzare le mappe invece che singole.
+Prima di tutto creeeremo un dataset vuoto di tipo STRDS (Space Time Raster DataSet).
+Da notare che verrà utilizzato il valore assoluto del tempo.
 To better handle the long time series of maps, we create temporal datasets
 which serve as containers for the time series and we will further manipulate
 them instead of the individual maps. First, we create empty datasets of type
@@ -177,6 +182,9 @@ t.create output=precip_sum type=strds temporaltype=absolute title="Preciptation"
 </pre>
 
 <p>
+A questo punto l'inter
+
+
 Now we register raster maps into yet empty space-time raster datasets
 with start date 2000-01-01 and interval time with increment 1 month.
 We use g.mlist again to list separately temperature and precipitation maps.
@@ -933,7 +941,7 @@ Note that 3D animation are not supported on MS Windows.
   Spatio-temporal data handling and visualization in GRASS GIS workshop for FOSS4G 2014
   by Vaclav Petras, Anna Petrasova, Helena Mitasova and Markus Neteler
   is licensed under&nbsp;a&nbsp;<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-  Traduzione Luca Casagrande
+  Traduzione Italiana di Luca Casagrande
 </p>
   <script src="codetabs.js"></script>
 </body>
