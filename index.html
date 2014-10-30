@@ -55,7 +55,7 @@ Sommario:
 <li> Rapida <a href="./GRASS_intro.pdf">introduzione a GRASS GIS</a> ed al <a href="./TGRASS_intro.pdf">Framework GRASS Temporal</a></li>
 <li> <a href="#climate-data-analysis">analisi e visualizzazione di dati climatici</a>
 <li> <a href="#nagshead-series">processamento di serie temporali per dati costieri e visualizzazione del cubo spazio-tempo</a>
-<li> <a href="#visualization-of-solar-radiation">compute and visualize solar radiation dynamics</a>
+<li> <a href="#visualization-of-solar-radiation">calcolo e visualizzazione dinamica della radiazione solare</a>
 </ul>
 
 <p>
@@ -75,7 +75,7 @@ Data:
 <li>mapset <code>NagsHead_series</code>: serie temporale di dati di elevazione derivate da dati lidar</li>
 <li>mapset <code>centennial</code>: DEM di una parte del campuse Centennial, NC State University, derivato da dati lidar</li>
 </ul>
-<li>tabella alternativa per colori:
+<li>tabelle di colori alternative:
     <a href="http://courses.ncsu.edu/mea592/common/Assign_GISmdmodel/temperature_color.txt">temperatura</a>,
     <a href="http://courses.ncsu.edu/mea592/common/Assign_GISmdmodel/precip_color.txt">pioggia</a>
 </li>
@@ -95,25 +95,23 @@ Terminologia:
 <li>vector map usually describes a discrete spatial phenomena, for example meteorological stations</li>
 -->
 <li>
-  un raster 3d è un raster tridimensionale; in alternativa si può chiamare voxel, voxel 3d oppure volume.
+  Un raster 3d è un raster tridimensionale. In alternativa può essere chiamato voxel, voxel 3d oppure volume;
 </li>
 <li>
-  in GRASS, un dataset spazio-temporale, è un insieme di mappe registrate all'interno di un database temporale di GRASS
+  In GRASS un dataset spazio-temporale è un insieme di mappe registrate all'interno di un database temporale di GRASS;
 </li>
 <li>
-  un modulo di GRASS è una funzione, una procedura o un algoritmo  a cui si può far riferimento anche come comando,
-  specialmente quando vengono forniti tutti i parametri (altri applicativi utilizzano il termine strumento o programma).
-  Un modulo può essere avviato tramite l'interfaccia grafica (GUI), tramite Python oppure dal terminale.
+  Un modulo di GRASS è una funzione, una procedura o un algoritmo  a cui si può far riferimento anche come comando,
+  specialmente quando vengono forniti tutti i parametri in fase di esecuzione (altri applicativi utilizzano il termine strumento o programma). Un modulo può essere avviato tramite l'interfaccia grafica (GUI), tramite Python oppure dal terminale.
 </li>
 
 <li>
-  la GUI è l'interfaccia grafica, ad esempio la finestra che si vede dopo aver avviato GRASS GIS.
+  La GUI è l'interfaccia grafica, ad esempio la finestra che si vede dopo aver avviato GRASS GIS.
   L'interfaccia di GRASS GIS viene di solito chiamata wxGUI per le tecnologie con cui è realizzata.
 </li>
 </ul>
 <p>
 Note:
-
 <ul>
 <li>
   Per eseguire un comando all'interno della GUI inserire i parametri necessari oppure
@@ -158,9 +156,9 @@ d.legend 2000_01_tempmean
 <p>
 Per gestiere al meglio la lunga serie di mappe, creeremo un dataset di tipo
 temporale che verrà utilizzato come un contenitore per l'intera serie. Questo
-permetterà di eseguire analisi in maniera globale invece che lavorare con mappe singole.
+permetterà di eseguire analisi in maniera globale invece di lavorare con mappe singole.
 Iniziamo creando due dataset di tipo STRDS (Space Time Raster DataSet) uno per ciascuna serie di mappe.
-Da notare che verrà utilizzato il valore assoluto del tempo.
+Da notare che, in questo esempio, il tempo verrà utilizzato come valore assoluto.
 <pre>
 <code>
 t.create output=tempmean type=strds temporaltype=absolute title="Average temperature" description="Monthly temperature average in NC [deg C]"
@@ -947,7 +945,7 @@ Da notare che l'animazione 3D non è supportata in MS Windows.
   Spatio-temporal data handling and visualization in GRASS GIS workshop for FOSS4G 2014
   by Vaclav Petras, Anna Petrasova, Helena Mitasova and Markus Neteler
   is licensed under&nbsp;a&nbsp;<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-  Traduzione Italiana di Luca Casagrande
+  Versione Italiana di Luca Casagrande
 </p>
   <script src="codetabs.js"></script>
 </body>
