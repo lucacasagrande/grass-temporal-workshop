@@ -53,9 +53,9 @@ Markus Neteler
 Sommario:
 <ul>
 <li> Rapida <a href="./GRASS_intro.pdf">introduzione a GRASS GIS</a> ed al <a href="./TGRASS_intro.pdf">Framework GRASS Temporal</a></li>
-<li> <a href="#climate-data-analysis">analisi e visualizzazione di dati climatici</a>
-<li> <a href="#nagshead-series">processamento di serie temporali per dati costieri e visualizzazione del cubo spazio-tempo</a>
-<li> <a href="#visualization-of-solar-radiation">calcolo e visualizzazione dinamica della radiazione solare</a>
+<li> <a href="#climate-data-analysis">Analisi e visualizzazione di dati climatici</a>
+<li> <a href="#nagshead-series">Processamento di serie temporali per dati costieri e visualizzazione del cubo spazio-tempo</a>
+<li> <a href="#visualization-of-solar-radiation">Calcolo e visualizzazione dinamica della radiazione solare</a>
 </ul>
 
 <p>
@@ -72,7 +72,7 @@ Data:
 <li>location <a href="./NC_spm_temporal_workshop.zip">NC_spm_temporal workshop</a>
 <ul>
 <li>mapset <code>climate_2000_2012</code>: serie di temperature e piogge per l'intero North Carolina</li>
-<li>mapset <code>NagsHead_series</code>: serie temporale di dati di elevazione derivate da dati lidar</li>
+<li>mapset <code>NagsHead_series</code>: serie temporale di dati di elevazione derivati da dati lidar</li>
 <li>mapset <code>centennial</code>: DEM di una parte del campuse Centennial, NC State University, derivato da dati lidar</li>
 </ul>
 <li>tabelle di colori alternative:
@@ -432,7 +432,7 @@ g.mlist type=rast pattern="2010*tempmean"
 
 <p>
 Iniziamo calcolando la media delle temperature per ciascuna stagione dell'anno (useremo il termine aggregazione).
-L'opzione 'where' per iniziare il calcolo il primo di marzo dell'anno 2000 perchè la stagione invernale dello stesso anno, non è completa.
+L'opzione 'where' serve ad iniziare il calcolo al primo di marzo dell'anno 2000 perchè la stagione invernale dello stesso anno non è completa.
 
 <pre>
 <code>
@@ -445,7 +445,7 @@ t.rast.aggregate input=tempmean output=tempmean_seasonal base=tempmean_seasonal 
 Estrazione del periodo estivo e conversione in gradi Fahrenheit.
 La funzione SQLite <tt>strftime('%m', start_time)</tt> restituisce il mese
 partendo dal timestamp della mappa iniziale.
-Da notare che la funzione <tt>strftime</tt> non si trova in GRASS ma è relativa
+Da notare che la funzione <tt>strftime</tt> non appartiene ai moduli di GRASS ma è relativa
 ad SQLite che costituisce il backend per la gestione dei dati.
 Nel caso in cui si utilizzi PostgreSQL, è necessario far riferimento ad una funzione
 simile.
@@ -461,7 +461,7 @@ t.rast.extract input=tempmean_seasonal where="strftime('%m', start_time)='06'" e
 <img src="./pictures/timeline_tempmean_seasonal.png" alt="temporal extents of tempmean_seasonal"/>
 
 <p>
-Ora noi visualizzeremo un'animazione delle temperature estive in North Carolina
+Ora visualizzeremo un'animazione con le temperature estive in North Carolina
 e ci sovrapporremo una mappa vettoriale contenente i confini degli stati ed una mappa raster di
 uno shaded relief (con semi-trasparenza).
 
