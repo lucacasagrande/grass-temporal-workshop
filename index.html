@@ -52,7 +52,7 @@ Markus Neteler
 <p>
 Sommario:
 <ul>
-<li> Rapida <a href="./GRASS_intro.pdf">introduzione a GRASS GIS</a> ed al <a href="./TGRASS_intro.pdf">Framework GRASS Temporal</a></li>
+<li> Rapida <a href="http://fatra.cnr.ncsu.edu/temporal-grass-workshop/GRASS_intro.pdf">introduzione a GRASS GIS</a> ed al <a href="http://fatra.cnr.ncsu.edu/temporal-grass-workshop/TGRASS_intro.pdf">Framework GRASS Temporal</a></li>
 <li> <a href="#climate-data-analysis">Analisi e visualizzazione di dati climatici</a>
 <li> <a href="#nagshead-series">Processamento di serie temporali per dati costieri e visualizzazione del cubo spazio-tempo</a>
 <li> <a href="#visualization-of-solar-radiation">Calcolo e visualizzazione dinamica della radiazione solare</a>
@@ -652,8 +652,7 @@ Si avvi grass7 con la location NC_spm_temporal_workshop ed il mapset NaghHead_se
 
 <h3>Registrazione e visualizzazione delle serie temporali</h3>
 
-Prima creiamo un dataset raster spazio-temporale vuoto. Utilizzeremo intervalli di tempo relativi e
-come unità l'anno.
+Prima creiamo un dataset raster spazio-temporale vuoto. Utilizzeremo intervalli di tempo relativi e l'anno come unità.
 
 <pre>
 <code>
@@ -672,11 +671,11 @@ t.list type=strds
 -->
 <p>
 Registrare le mappe nel dataset utilizzando l'elenco qui di seguito.
-Ciascuna mappa ha associato un anno ed il delimitatore di default è il pipe.
+Ciascuna mappa contiene nel nome l'anno ed il delimitatore di default è il pipe.
 
 <pre>
 <code class="gui">
-Nella finestra di t.register incollare il seguente elenco nello spazio dove vengono inserite le mappe:
+Nella finestra di t.register incollare il seguente elenco nello spazio dove vanno inserite le mappe:
 NH_1999_1m|1999
 NH_2001_1m|2001
 NH_2004_1m|2004
@@ -702,7 +701,7 @@ t.register input=NagsHead_99_08 type=rast file=NH.txt unit=years
 
 <p>
 Visualizzando l'estensione temporale mediante lo strumento Timeline,
-si nota che ogni mappa è registrata come istanza e che sono presenti dei dati mancanti nel dataset.
+si nota che ogni mappa è stata registrata nel dataset e che ci sono degli anni senza dato.
 <p>
 <img src="./pictures/timeline_nagshead_gaps.png" alt="temporal extents of NagsHead dataset"/>
 
@@ -874,7 +873,7 @@ g.extension extension=r.sun.hourly
 </code></pre>
 
 <p>
-Convertire la data di oggi (o qualsiasi altra data) in giorni dell'anno, eseguendo questo comando nella shell di Pyhon presente nella GUI.
+Convertire la data di oggi (o qualsiasi altra data) in giorni dell'anno eseguendo questo comando nella shell di Pyhon presente nella GUI.
 
 <pre>
 <code class="python">
@@ -917,10 +916,10 @@ t.rast.colors input=beam rules=rules.txt
 </pre>
 
 <p>
-Finalmente, animeremo la serie temporale in 3D. Per fare questo prima di tutto aggiungiamo, ai layer
-visibili, la mappa <code>elev_lid_small</code>. Passiamo alla visualae 3D ad aggiustiamo i parametri
-di visualizzazione come preferito. Modifichiamo i colori utilizzando una delle mappe di radiazione 
-solare (riferimento al  <a href="http://grass.osgeo.org/grass70/manuals/wxGUI.nviz.html#3d-view-layer-manager-toolbox">manuale della GUI</a>).
+Finalmente creiamo l'animazione 3D della serie temporale. Per fare questo prima di tutto aggiungiamo, ai layer
+visibili, la mappa <code>elev_lid_small</code>. Passiamo alla visuale 3D e modifichiamo i parametri
+di visualizzazione a piacere. Modifichiamo i colori utilizzando una delle mappe di radiazione 
+solare (fare riferimento al  <a href="http://grass.osgeo.org/grass70/manuals/wxGUI.nviz.html#3d-view-layer-manager-toolbox">manuale della GUI</a>).
 A questo punto salviamo il file di configurazione del workspace.
 Avviamo lo strumento di animazione ed aggiungiamo una nuova animazione. Scegliamo 3D, aggiungiamo il dataset
 spazio-temporale calcolato, selezioniamo il file del workspace e scegliamo color_map per il tipo di animazione.
