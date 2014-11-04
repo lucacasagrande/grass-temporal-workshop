@@ -289,7 +289,7 @@ g.gui.tplot inputs=precip_sum coordinates=366165,218084
 -->
 <p>
 Ora andremo ad animare una parte del dataset. 
-Prima estrarremo l'anno 2010 da entrambi i dataset; questo non crea un nuovo dataset, ma punta semplicemente al vecchio dataset.
+Prima estrarremo l'anno 2010 da entrambi i dataset; questa operazione non creerà un nuovo dataset, ma il nuovo punterà semplicemente al vecchio dataset.
 <pre>
 <code>
 t.rast.extract input=tempmean output=tempmean_2010 where="start_time &gt;= '2010-01-01' and start_time &lt; '2011-01-01'"
@@ -323,7 +323,7 @@ Creiamo un'animazione per i dati di pioggia relativi al 2010 (come nell'immagine
   e scegliere un formato adatto dal menù a tendina.
 </li>
 <li>
-Per visualizzare la legenza, prima dobbiamo ricavare i valori minimo e massimo per l'intero dataset.
+Per visualizzare la legenda, prima dobbiamo ricavare i valori minimo e massimo per l'intero dataset.
 Otteniamo questi valori utilizzando il comando t.info. Quindi, nella finestra 'Edit animation', selezionare
 legenda, impostare l'option rast ad una qualsiasi mappa del dataset e inserire i valori minimo e massimo
 in base all'output di t.info (nel formato min,max).
@@ -418,7 +418,7 @@ id|start|end|mean|min|max|mean_of_abs|stddev|variance|coeff_var|sum|null_cells|c
 <p>
 Per finire, eliminiamo i due dataset relativi al 2010. Da notare nell'esempio verrà rimosso solamente il contenitore,
 non le mappe attuali, come si può verificare dall'output del comando g.mlists.
-Usando le apposite opzione,il modulo t.remove permette di rimuovere anche i dati. Non useremo questa opzione in quanto ancora abbiamo bisogno dei dati.
+Usando l'apposita opzione, il modulo t.remove permette di rimuovere anche i dati. Non useremo questa opzione in quanto ancora abbiamo bisogno dei dati.
 <pre>
 <code class="neutral">
 t.remove inputs=tempmean_2010,precip_sum_2010
